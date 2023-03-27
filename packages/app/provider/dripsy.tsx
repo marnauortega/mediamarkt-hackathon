@@ -6,6 +6,7 @@ const theme = makeTheme({
     $primary: '#DF0000',
     $lightText: 'white',
     $darkGray: 'rgba(58,53,65, 0.87)',
+    $gray: 'rgba(58,53,65, 0.38)',
     $lightGray: 'rgba(58,53,65,0.12)',
   },
   text: {

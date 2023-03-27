@@ -4,9 +4,39 @@ import box from '../assets/images/box.svg'
 import truckIcon from '../assets/images/truckIcon.svg'
 import { Link } from 'solito/link'
 
-const ParcelRow = () => {
+const ParcelRow = ({ id, carrier, itemsCount, deliveryStatus, daySlug }) => {
+  let deliveryStatusText
+
+  if (deliveryStatus === 'delivered') {
+    deliveryStatusText = (
+      <P
+        sx={{
+          paddingRight: 10,
+          textTransform: 'uppercase',
+          color: '$gray',
+        }}
+      >
+        Delivered
+      </P>
+    )
+  }
+
+  if (deliveryStatus === 'notDelivered') {
+    deliveryStatusText = (
+      <P
+        sx={{
+          paddingRight: 10,
+          textTransform: 'uppercase',
+          color: '$primary',
+        }}
+      >
+        Delivery
+      </P>
+    )
+  }
+
   return (
-    <Link href="/parcel">
+    <Link href={`/${daySlug}/${id}`}>
       <View
         sx={{
           height: 70,
@@ -33,7 +63,7 @@ const ParcelRow = () => {
               paddingLeft: 10,
             }}
           >
-            sk165887809
+            {id}
           </P>
         </View>
         <P
@@ -42,21 +72,13 @@ const ParcelRow = () => {
             textTransform: 'uppercase',
           }}
         >
-          Seur
+          {carrier}
         </P>
         <View sx={{ flexDirection: 'row', alignItems: 'center' }}>
-          <P sx={{ paddingRight: 10, color: '$darkGray' }}> 16</P>
+          <P sx={{ paddingRight: 10, color: '$darkGray' }}> {itemsCount}</P>
           <SolitoImage src={box} height={16} width={16} alt="A box icon" />
         </View>
-        <P
-          sx={{
-            paddingRight: 10,
-            textTransform: 'uppercase',
-            color: '$primary',
-          }}
-        >
-          Delivery
-        </P>
+        {deliveryStatusText}
       </View>
     </Link>
   )

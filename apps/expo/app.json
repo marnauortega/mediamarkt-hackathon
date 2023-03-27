@@ -1,18 +1,29 @@
 {
   "expo": {
-    "name": "solito-expo-router",
-    "slug": "solito-expo-router",
+    "name": "mediamarkt-hackathon",
+    "slug": "mediamarkt-hackathon",
     "version": "1.0.0",
-    "scheme": "solito-expo-router",
+    "scheme": "mediamarkt-hackathon",
     "platforms": [
       "ios",
       "android"
     ],
     "ios": {
-      "bundleIdentifier": "com.solito.expo-router"
+      "bundleIdentifier": "com.marnauortega.solitoexporouter"
     },
     "android": {
       "package": "com.marnauortega.solitoexporouter"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f1900380-db2d-46df-a24b-0ec585d37c84"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/f1900380-db2d-46df-a24b-0ec585d37c84"
     }
   }
 }

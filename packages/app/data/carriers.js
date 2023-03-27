@@ -1,4 +1,4 @@
-export default carriers = [
+const carriers = [
   {
     id: { $oid: 'het32r0g0u78' },
     companyName: 'Seur',
@@ -70,3 +70,5 @@ export default carriers = [
     centerAdress: 'St. Paris, 158, Barcelona',
   },
 ]
+
+export default carriers

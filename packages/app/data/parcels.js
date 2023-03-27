@@ -1,4 +1,4 @@
-export default parcels = [
+const parcels = [
   {
     id: { $oid: '641db7b2fc13' },
     deliveryAdress: 'St. Marina, 54, Barcelona',
@@ -200,3 +200,5 @@ export default parcels = [
     items: [{ $oid: 'fc13ae125y0h0577' }],
   },
 ]
+
+export default parcels

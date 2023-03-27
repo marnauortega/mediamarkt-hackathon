@@ -3,10 +3,15 @@ import { SolitoImage } from 'solito/image'
 import box from '../assets/images/box.svg'
 import truck from '../assets/images/truck.svg'
 import { Link } from 'solito/link'
+import formatDateDayMonth from '../utils/formatDateDayMonth'
+import formatDateDaySlug from '../utils/formatDateSlug'
 
-const DayRow = ({ day, items, finishedDeliveries, totalDeliveries }) => {
+const DayRow = ({ date, items, finishedDeliveries, totalDeliveries }) => {
+  const formattedDate = formatDateDayMonth(date)
+  const slug = formatDateDaySlug(date)
+
   return (
-    <Link href="/day">
+    <Link href={'/' + slug}>
       <View
         sx={{
           height: 70,
@@ -19,13 +24,17 @@ const DayRow = ({ day, items, finishedDeliveries, totalDeliveries }) => {
           borderBottomColor: '$lightGray',
         }}
       >
-        <P sx={{ color: '$darkGray' }}>{day}</P>
+        <P sx={{ color: '$darkGray', textTransform: 'capitalize' }}>
+          {formattedDate}
+        </P>
         <View sx={{ flexDirection: 'row', alignItems: 'center' }}>
           <P sx={{ paddingRight: 10, color: '$darkGray' }}>{items}</P>
           <SolitoImage src={box} height={16} width={16} alt="A box icon" />
         </View>
         <View sx={{ flexDirection: 'row', alignItems: 'center' }}>
-          <P sx={{ paddingRight: 10, color: '$darkGray' }}>{finishedDeliveries} / {totalDeliveries}</P>
+          <P sx={{ paddingRight: 10, color: '$darkGray' }}>
+            {finishedDeliveries} / {totalDeliveries}
+          </P>
           <SolitoImage src={truck} height={16} width={16} alt="A truck icon" />
         </View>
       </View>

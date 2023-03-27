@@ -10,7 +10,24 @@ import heavy from '../assets/images/heavy.svg'
 import chevronDown from '../assets/images/chevronDown.svg'
 import { Link } from 'solito/link'
 
-const ItemRow = () => {
+const ItemRow = ({ type, id, weight, price, model }) => {
+  let itemImageSrc
+
+  if (type === 'Smartwatch') itemImageSrc = watchIcon
+  if (type === 'Phone') itemImageSrc = phoneIcon
+  if (type === 'Television') itemImageSrc = tvIcon
+  if (type === 'PC') itemImageSrc = laptopIcon
+
+  let weightImageSrc
+
+  if (weight < 100) {
+    weightImageSrc = light
+  } else if (100 <= weight && weight < 200) {
+    weightImageSrc = regular
+  } else {
+    weightImageSrc = heavy
+  }
+
   return (
     <Link href="/parcel">
       <View
@@ -27,10 +44,10 @@ const ItemRow = () => {
       >
         <View sx={{ flexDirection: 'row', alignItems: 'center' }}>
           <SolitoImage
-            src={watchIcon}
+            src={itemImageSrc}
             height={33}
             width={33}
-            alt="A watch icon"
+            alt={`A ${type} icon`}
           />
           <P
             sx={{
@@ -39,13 +56,13 @@ const ItemRow = () => {
               paddingLeft: 10,
             }}
           >
-            sk2673729
+            {id}
           </P>
         </View>
         <View sx={{ flexDirection: 'row', alignItems: 'center' }}>
-          <P sx={{ paddingRight: 10, color: '$darkGray' }}> 100kg</P>
+          <P sx={{ paddingRight: 10, color: '$darkGray' }}> {weight}gr</P>
           <SolitoImage
-            src={regular}
+            src={weightImageSrc}
             height={16}
             width={16}
             alt="A half full icon"
