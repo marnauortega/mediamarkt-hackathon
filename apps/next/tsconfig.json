@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true
+  },
+  "include": ["next-env.d.ts", "app-env.d.ts", "**/*.ts", "**/*.tsx", "pages/day/index.jsx", "pages/parcel/index.jsx", "pages/user/[id].jsx", "pages/_app.jsx", "pages/index.jsx"],
+  "exclude": ["node_modules"]
+}
