@@ -1,3 +1,3 @@
-import ParcelScreen from 'app/features/parcel/screen'
+import ParcelScreen from 'app/features/parcel/ParcelScreen'
 
 export default ParcelScreen

@@ -4,7 +4,10 @@ const theme = makeTheme({
   // https://www.dripsy.xyz/usage/theming/create
   colors: {
     $primary: '#DF0000',
+    $lightPrimary: 'rgba(223,0,0, 0.15)',
     $lightText: 'white',
+    $lightTransparent: 'rgba(255,255,255, 0.2)',
+    $darkerGray: 'rgba(58,53,65, 1)',
     $darkGray: 'rgba(58,53,65, 0.87)',
     $gray: 'rgba(58,53,65, 0.38)',
     $lightGray: 'rgba(58,53,65,0.12)',

@@ -3,12 +3,12 @@ import { View, Text } from 'dripsy'
 
 const AddParcelLink = () => {
   return (
-    <TextLink href="/">
-      <View
-        sx={{
-          alignItems: 'center',
-        }}
-      >
+    <View
+      sx={{
+        alignItems: 'center',
+      }}
+    >
+      <TextLink href="/add-parcel/id-scan">
         <View
           sx={{
             height: 48,
@@ -21,8 +21,8 @@ const AddParcelLink = () => {
         >
           <Text sx={{ color: '$lightText' }}>+</Text>
         </View>
-      </View>
-    </TextLink>
+      </TextLink>
+    </View>
   )
 }
 

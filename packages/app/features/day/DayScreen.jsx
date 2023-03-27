@@ -4,7 +4,7 @@ import { createParam } from 'solito'
 import days from 'app/data/days'
 import formatDateSlug from 'app/utils/formatDateSlug'
 import parcels from 'app/data/parcels'
-import { View } from 'dripsy'
+import { P, View } from 'dripsy'
 
 const { useParam } = createParam()
 
@@ -14,7 +14,38 @@ const DayScreen = () => {
 
   return (
     <>
-      <Header />
+      <Header preTitle="Day" title="24 Mar">
+        <View sx={{ flexDirection: 'row', gap: 15 }}>
+          <P
+            sx={{
+              color: '$lightText',
+              borderColor: '$lightText',
+              borderWidth: 1,
+              borderRadius: 20,
+              paddingLeft: 36,
+              paddingRight: 36,
+              marginTop: 0,
+              marginBottom: 0,
+            }}
+          >
+            14 Items
+          </P>
+          <P
+            sx={{
+              color: '$lightText',
+              borderColor: '$lightText',
+              borderWidth: 1,
+              borderRadius: 20,
+              paddingLeft: 36,
+              paddingRight: 36,
+              marginTop: 0,
+              marginBottom: 0,
+            }}
+          >
+            1 / 4 Deliveries
+          </P>
+        </View>
+      </Header>
       {day?.parcels?.map((parcelRef) => {
         const parcelId = parcelRef.$oid
 

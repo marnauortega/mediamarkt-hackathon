@@ -8,7 +8,6 @@ import light from '../assets/images/light.svg'
 import regular from '../assets/images/regular.svg'
 import heavy from '../assets/images/heavy.svg'
 import chevronDown from '../assets/images/chevronDown.svg'
-import { Link } from 'solito/link'
 
 const ItemRow = ({ type, id, weight, price, model }) => {
   let itemImageSrc
@@ -29,53 +28,51 @@ const ItemRow = ({ type, id, weight, price, model }) => {
   }
 
   return (
-    <Link href="/parcel">
-      <View
-        sx={{
-          height: 70,
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          paddingLeft: 20,
-          paddingRight: 20,
-          borderBottomWidth: 1,
-          borderBottomColor: '$lightGray',
-        }}
-      >
-        <View sx={{ flexDirection: 'row', alignItems: 'center' }}>
-          <SolitoImage
-            src={itemImageSrc}
-            height={33}
-            width={33}
-            alt={`A ${type} icon`}
-          />
-          <P
-            sx={{
-              color: '$darkGray',
-              textTransform: 'uppercase',
-              paddingLeft: 10,
-            }}
-          >
-            {id}
-          </P>
-        </View>
-        <View sx={{ flexDirection: 'row', alignItems: 'center' }}>
-          <P sx={{ paddingRight: 10, color: '$darkGray' }}> {weight}gr</P>
-          <SolitoImage
-            src={weightImageSrc}
-            height={16}
-            width={16}
-            alt="A half full icon"
-          />
-        </View>
+    <View
+      sx={{
+        height: 70,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingLeft: 20,
+        paddingRight: 20,
+        borderBottomWidth: 1,
+        borderBottomColor: '$lightGray',
+      }}
+    >
+      <View sx={{ flexDirection: 'row', alignItems: 'center' }}>
         <SolitoImage
-          src={chevronDown}
+          src={itemImageSrc}
+          height={33}
+          width={33}
+          alt={`A ${type} icon`}
+        />
+        <P
+          sx={{
+            color: '$darkGray',
+            textTransform: 'uppercase',
+            paddingLeft: 10,
+          }}
+        >
+          {id}
+        </P>
+      </View>
+      <View sx={{ flexDirection: 'row', alignItems: 'center' }}>
+        <P sx={{ paddingRight: 10, color: '$darkGray' }}> {weight}gr</P>
+        <SolitoImage
+          src={weightImageSrc}
           height={16}
           width={16}
-          alt="An accordion icon"
+          alt="A half full icon"
         />
       </View>
-    </Link>
+      <SolitoImage
+        src={chevronDown}
+        height={16}
+        width={16}
+        alt="An accordion icon"
+      />
+    </View>
   )
 }
 
