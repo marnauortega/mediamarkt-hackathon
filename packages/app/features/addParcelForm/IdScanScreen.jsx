@@ -1,9 +1,9 @@
 import Header from 'app/components/Header'
 import { P, useSx, View, Text } from 'dripsy'
 import { TextLink } from 'solito/link'
-import { BarCodeScanner } from 'expo-barcode-scanner'
+import { Platform } from 'react-native'
 import { StyleSheet } from 'react-native'
-
+import { BarCodeScanner } from 'expo-barcode-scanner'
 import { useState, useEffect, useContext } from 'react'
 import { AddParcelContext } from 'app/provider/AddParcelProvider'
 
@@ -12,33 +12,35 @@ import { useRouter } from 'solito/router'
 const IdScanScreen = () => {
   const sx = useSx()
 
-  const { id, setId } = useContext(AddParcelContext)
-  const [hasPermission, setHasPermission] = useState(null)
-  const [scanned, setScanned] = useState(false)
-
-  const { push } = useRouter()
-
-  useEffect(() => {
-    const getBarCodeScannerPermissions = async () => {
-      const { status } = await BarCodeScanner.requestPermissionsAsync()
-      setHasPermission(status === 'granted')
-    }
-
-    getBarCodeScannerPermissions()
-  }, [])
-
-  const handleBarCodeScanned = ({ type, data }) => {
-    setScanned(true)
-    setId(data)
-    push('/add-parcel/id-field')
+  if (Platform.OS === 'android' || Platform.OS === 'ios') {
   }
+  // const { id, setId } = useContext(AddParcelContext)
+  // const [hasPermission, setHasPermission] = useState(null)
+  // const [scanned, setScanned] = useState(false)
 
-  if (hasPermission === null) {
-    return <Text>Requesting for camera permission</Text>
-  }
-  if (hasPermission === false) {
-    return <Text>No access to camera</Text>
-  }
+  // const { push } = useRouter()
+
+  // useEffect(() => {
+  //   const getBarCodeScannerPermissions = async () => {
+  //     const { status } = await BarCodeScanner.requestPermissionsAsync()
+  //     setHasPermission(status === 'granted')
+  //   }
+
+  //   getBarCodeScannerPermissions()
+  // }, [])
+
+  // const handleBarCodeScanned = ({ type, data }) => {
+  //   setScanned(true)
+  //   setId(data)
+  //   push('/add-parcel/id-field')
+  // }
+
+  // if (hasPermission === null) {
+  //   return <Text>Requesting for camera permission</Text>
+  // }
+  // if (hasPermission === false) {
+  //   return <Text>No access to camera</Text>
+  // }
 
   return (
     <>
@@ -115,11 +117,11 @@ const IdScanScreen = () => {
           height: 40,
         }}
       >
-        <BarCodeScanner
+        {/* <BarCodeScanner
           onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
           style={StyleSheet.absoluteFillObject}
           sx={{ flex: 1, margin: 60 }}
-        />
+        /> */}
       </View>
     </>
   )
