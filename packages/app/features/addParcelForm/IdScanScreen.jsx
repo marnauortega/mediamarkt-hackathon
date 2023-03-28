@@ -1,7 +1,7 @@
 import Header from 'app/components/Header'
 import { P, useSx, View, Text } from 'dripsy'
 import { TextLink } from 'solito/link'
-import { BarCodeScanner } from 'expo-barcode-scanner'
+// import { BarCodeScanner } from 'expo-barcode-scanner'
 import { StyleSheet } from 'react-native'
 
 import { useState, useEffect, useContext } from 'react'
