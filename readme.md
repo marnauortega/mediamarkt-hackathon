@@ -13,6 +13,8 @@ What I've used to build this app that works everywhere are some outstanding rece
 
 ## ⚡️ Features
 
+[![video](/packages/app/assets/images/features.png)](https://youtu.be/Le-qnIQ_8BE)
+
 - Redesigned screens to make the app more accesible and fun to use. More icons and visual content. Here's the [figma file](<https://www.figma.com/file/sYGGCKogACWSEjsxyVibfQ/CarrierX-(Copy)?node-id=0%3A1&t=jzqBwjVJRb48PArO-1>)
 
 - Monthly view of available parcels with navigation to daily overview and parcel contents.

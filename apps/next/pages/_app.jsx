@@ -9,12 +9,9 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Solito Example App</title>
-        <meta
-          name="description"
-          content="Expo + Next.js with Solito. By Fernando Rojo."
-        />
-        <link rel="icon" href="/favicon.ico" />
+        <title>CarrierX · Mediamarkt</title>
+        <meta name="description" content="CarrierX - Mediamarkt" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <Provider>
         <Component {...pageProps} />

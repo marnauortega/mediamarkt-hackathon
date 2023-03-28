@@ -115,7 +115,7 @@ const IdScanScreen = () => {
           height: 40,
         }}
       >
-        <P>Not available on web</P>
+        <P sx={{ color: '$lightText' }}>Not available on web</P>
         {/* <BarCodeScanner
           onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
           style={StyleSheet.absoluteFillObject}
