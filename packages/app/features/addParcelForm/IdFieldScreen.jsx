@@ -17,7 +17,6 @@ import idIcon from 'app/assets/images/idIcon.svg'
 const IdFieldScreen = () => {
   const { dayList, setDayList } = useContext(DaysContext)
   const { id, setId } = useContext(AddParcelContext)
-  console.log(id)
   const sx = useSx()
   const { push } = useRouter()
   const [error, setError] = useState('')
@@ -32,7 +31,6 @@ const IdFieldScreen = () => {
     }
 
     // 1. input id is in parcel list?
-    console.log(parcels)
     const parcel = parcels.find((parcel) => parcel.id.$oid === id)
 
     // 1A. No, error message: "no parcel with such id"
