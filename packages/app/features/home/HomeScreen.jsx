@@ -10,6 +10,8 @@ const HomeScreen = () => {
   const sx = useSx()
 
   const { dayList } = useContext(DaysContext)
+  console.log(dayList)
+  const orderedDayList = [...dayList].sort((a, b) => a.date - b.date)
 
   return (
     <>
@@ -30,7 +32,7 @@ const HomeScreen = () => {
         </P>
       </Header>
       <FlatList
-        data={dayList}
+        data={orderedDayList}
         renderItem={({ item }) => (
           <DayRow
             date={item.date}

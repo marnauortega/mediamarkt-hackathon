@@ -8,7 +8,7 @@ const carriers = [
   },
   {
     id: { $oid: 'het32gb78b6q' },
-    companyName: 'MWR',
+    companyName: 'MRW',
     driver: 'Anna-maria Tompion',
     licensePlate: '5780hqa',
     centerAdress: 'St. Paris, 158, Barcelona',
@@ -43,7 +43,7 @@ const carriers = [
   },
   {
     id: { $oid: 'het32gb7yh18' },
-    companyName: 'MWR',
+    companyName: 'MRW',
     driver: 'Stevana Hassan',
     licensePlate: '7711gus',
     centerAdress: 'St. Paris, 158, Barcelona',
@@ -64,7 +64,7 @@ const carriers = [
   },
   {
     id: { $oid: 'het32gb78j6v' },
-    companyName: 'MWR',
+    companyName: 'MRW',
     driver: 'Jecho Tatlock',
     licensePlate: '1072mbn',
     centerAdress: 'St. Paris, 158, Barcelona',

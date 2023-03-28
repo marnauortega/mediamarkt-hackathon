@@ -10,6 +10,7 @@ import items from 'app/data/items'
 import { P, View } from 'dripsy'
 import AppButton from 'app/components/AppButton'
 import { FlatList } from 'dripsy'
+import { useRouter } from 'solito/router'
 
 const { useParam } = createParam()
 
@@ -21,6 +22,8 @@ const ParcelScreen = () => {
   const { dayList } = useContext(DaysContext)
   const day = dayList.find((day) => formatDateSlug(day.date) === daySlug)
   const carrier = day.parcels.find((parcel) => parcel.$oid === idSlug).carrier
+
+  const { push } = useRouter()
 
   return (
     <>
@@ -76,7 +79,10 @@ const ParcelScreen = () => {
         }}
       />
       <View sx={{ padding: 20 }}>
-        <AppButton title="Delivery" />
+        <AppButton
+          title="Delivery"
+          onPress={() => push(`/delivery/${idSlug}`)}
+        />
       </View>
     </>
   )
