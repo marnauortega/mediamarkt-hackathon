@@ -17,6 +17,7 @@ import idIcon from 'app/assets/images/idIcon.svg'
 const IdFieldScreen = () => {
   const { dayList, setDayList } = useContext(DaysContext)
   const { id, setId } = useContext(AddParcelContext)
+  console.log(id)
   const sx = useSx()
   const { push } = useRouter()
   const [error, setError] = useState('')
@@ -158,6 +159,7 @@ const IdFieldScreen = () => {
         <AppTextInput
           placeholder={'Ex. 641db7b2fc16'}
           onChangeText={(text) => setId(text)}
+          defaultValue={id}
         />
         <Text sx={{ color: '$primary' }}>{error}</Text>
       </View>

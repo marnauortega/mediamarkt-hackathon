@@ -1,10 +1,17 @@
-import { View, P } from 'dripsy'
+import { View, P, Text } from 'dripsy'
 import { SolitoImage } from 'solito/image'
 import box from '../assets/images/box.svg'
 import truckIcon from '../assets/images/truckIcon.svg'
 import { Link } from 'solito/link'
 
-const ParcelRow = ({ id, carrier, itemsCount, deliveryStatus, daySlug }) => {
+const ParcelRow = ({
+  id,
+  carrier,
+  itemsCount,
+  deliveryStatus,
+  daySlug,
+  idSlug,
+}) => {
   let deliveryStatusText
 
   if (deliveryStatus === 'delivered') {
@@ -23,15 +30,17 @@ const ParcelRow = ({ id, carrier, itemsCount, deliveryStatus, daySlug }) => {
 
   if (deliveryStatus === 'notDelivered') {
     deliveryStatusText = (
-      <P
-        sx={{
-          paddingRight: 10,
-          textTransform: 'uppercase',
-          color: '$primary',
-        }}
-      >
-        Delivery
-      </P>
+      <Link href={`/delivery/${idSlug}`}>
+        <Text
+          sx={{
+            paddingRight: 10,
+            textTransform: 'uppercase',
+            color: '$primary',
+          }}
+        >
+          Delivery
+        </Text>
+      </Link>
     )
   }
 

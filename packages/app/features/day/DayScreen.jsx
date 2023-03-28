@@ -13,6 +13,7 @@ import AddParcelLink from 'app/components/AddParcelLink'
 const { useParam } = createParam()
 
 const DayScreen = () => {
+  const [idSlug] = useParam('id')
   const [daySlug] = useParam('slug')
   const { dayList } = useContext(DaysContext)
   const day = dayList.find((day) => formatDateSlug(day.date) === daySlug)
@@ -65,6 +66,7 @@ const DayScreen = () => {
               itemsCount={parcel.itemsCount}
               deliveryStatus={item.deliveryStatus}
               daySlug={daySlug}
+              idSlug={idSlug}
             />
           )
         }}

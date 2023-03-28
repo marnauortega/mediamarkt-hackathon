@@ -4,6 +4,11 @@
     "slug": "mediamarkt-hackathon",
     "version": "1.0.0",
     "scheme": "mediamarkt-hackathon",
+    "splash": {
+      "image": "splash.png",
+      "resizeMode": "contain",
+      "backgroundColor" : "#ff0000"
+    }, 
     "platforms": [
       "ios",
       "android"

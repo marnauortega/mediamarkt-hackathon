@@ -5,6 +5,8 @@ import Header from 'app/components/Header'
 import { View, P, useSx, FlatList } from 'dripsy'
 import DayRow from '../../components/DayRow'
 import AddParcelLink from 'app/components/AddParcelLink'
+import { SolitoImage } from 'solito/image'
+import carrierX from 'app/assets/images/carrierX.svg'
 
 const HomeScreen = () => {
   const sx = useSx()
@@ -15,7 +17,15 @@ const HomeScreen = () => {
 
   return (
     <>
-      <Header preTitle="Calendar" title="CARRIERX">
+      <Header preTitle="Calendar">
+        <View sx={{ paddingTop: 10, paddingBottom: 10 }}>
+          <SolitoImage
+            src={carrierX}
+            height={36}
+            width={108}
+            alt="the main title"
+          />
+        </View>
         <P
           sx={{
             color: '$lightText',
