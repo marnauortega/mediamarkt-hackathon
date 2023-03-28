@@ -11,6 +11,8 @@ import { TextLink } from 'solito/link'
 
 import AppTextInput from 'app/components/AppTextInput'
 import AppButton from 'app/components/AppButton'
+import FieldDescription from 'app/components/FieldDescription'
+import idIcon from 'app/assets/images/idIcon.svg'
 
 const IdFieldScreen = () => {
   const { dayList, setDayList } = useContext(DaysContext)
@@ -152,6 +154,7 @@ const IdFieldScreen = () => {
           padding: 20,
         }}
       >
+        <FieldDescription icon={idIcon}>Write the parcel id</FieldDescription>
         <AppTextInput
           placeholder={'Ex. 641db7b2fc16'}
           onChangeText={(text) => setId(text)}
