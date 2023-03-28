@@ -6,7 +6,7 @@ import { useRouter } from 'solito/router'
 
 import Header from 'app/components/Header'
 import { createParam } from 'solito'
-import { View } from 'dripsy'
+import { View, Text } from 'dripsy'
 
 import AppTextInput from 'app/components/AppTextInput'
 import AppButton from 'app/components/AppButton'
@@ -18,6 +18,7 @@ const DeliveryFieldsScreen = () => {
   const [name, setName] = useState('')
   const [license, setLicense] = useState('')
   const { push } = useRouter()
+  const [error, setError] = useState('')
 
   const [idSlug] = useParam('id')
 
@@ -29,9 +30,7 @@ const DeliveryFieldsScreen = () => {
 
     // 1A. No, "Error, this parcel cannot be delivered. Go back, and try again"
     if (!day) {
-      console.log(
-        'Error, this parcel cannot be delivered. Go back, and try again'
-      )
+      setError('This parcel cannot be delivered. Go back, and try again')
       return
     }
 
@@ -42,16 +41,14 @@ const DeliveryFieldsScreen = () => {
     // 2A. Yes, (shouldn't happen, but make sure it isn't delivered again) "Error, this parcel is already delivered"
     // return
     if (parcelRef.deliveryStatus === 'delivered') {
-      console.log('Error, this parcel is already delivered')
+      setError('This parcel is already delivered')
       return
     }
 
     // 3. Delivered status "notDelivered"?
     // 3A. No, "Error: there's a problem, contact support or try again"
     if (parcelRef.deliveryStatus !== 'notDelivered') {
-      console.log(
-        "Error: there's a database problem, contact support or try again"
-      )
+      setError("There's a database problem, contact support or try again")
       return
     }
 
@@ -59,22 +56,22 @@ const DeliveryFieldsScreen = () => {
     // 4A. No, "Error: this driver is not in the database, contact support"
     const carrier = carriers.find((carrier) => carrier.driver === name)
     if (!carrier) {
-      console.log('Error: this driver is not in the database, contact support')
+      setError('This driver is not in the database, contact support')
       return
     }
 
     // 5. Carrier coincides with driver.carrier?
     // 5A. No, "Error: this parcel should be delivered by another Carrier"
-    if (parcelRef.carrier !== carrier.companyName) {
-      console.log('Error: this parcel should be delivered by another Carrier')
+    if (parcelRef.carrier.toUpperCase() !== carrier.companyName.toUpperCase()) {
+      setError('This parcel should be delivered by another Carrier')
       return
     }
 
     // 6. License coincides with carrier.license?
     // 6A. No, "Error: this parcel should be delivered by another Carrier"
     if (license !== carrier.licensePlate) {
-      console.log(
-        'Error: this license is not in our database, contact support or try again'
+      setError(
+        'This license is not in our database, contact support or try again'
       )
       return
     }
@@ -115,6 +112,7 @@ const DeliveryFieldsScreen = () => {
           placeholder={'License plate'}
           onChangeText={(text) => setLicense(text)}
         />
+        <Text sx={{ color: '$primary' }}>{error}</Text>
       </View>
       <View sx={{ padding: 20 }}>
         <AppButton title="Next" onPress={handlePress} />

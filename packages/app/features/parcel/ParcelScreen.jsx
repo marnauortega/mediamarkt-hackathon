@@ -21,7 +21,8 @@ const ParcelScreen = () => {
   const [daySlug] = useParam('slug')
   const { dayList } = useContext(DaysContext)
   const day = dayList.find((day) => formatDateSlug(day.date) === daySlug)
-  const carrier = day.parcels.find((parcel) => parcel.$oid === idSlug).carrier
+  const carrier = day?.parcels.find((parcel) => parcel.$oid === idSlug).carrier
+  const parcelRef = day?.parcels.find((parcel) => parcel.$oid === idSlug)
 
   const { push } = useRouter()
 
@@ -41,7 +42,7 @@ const ParcelScreen = () => {
               marginBottom: 0,
             }}
           >
-            {parcel.itemsCount} items
+            {parcel?.itemsCount} items
           </P>
           <P
             sx={{
@@ -78,12 +79,15 @@ const ParcelScreen = () => {
           )
         }}
       />
-      <View sx={{ padding: 20 }}>
-        <AppButton
-          title="Delivery"
-          onPress={() => push(`/delivery/${idSlug}`)}
-        />
-      </View>
+
+      {parcelRef?.deliveryStatus === 'notDelivered' && (
+        <View sx={{ padding: 20 }}>
+          <AppButton
+            title="Delivery"
+            onPress={() => push(`/delivery/${idSlug}`)}
+          />
+        </View>
+      )}
     </>
   )
 }

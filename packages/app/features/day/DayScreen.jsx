@@ -19,7 +19,7 @@ const DayScreen = () => {
 
   return (
     <>
-      <Header preTitle="Day" title={formatDateDayMonth(day.date)}>
+      <Header preTitle="Day" title={formatDateDayMonth(day?.date)}>
         <View sx={{ flexDirection: 'row', gap: 15 }}>
           <P
             sx={{
@@ -33,7 +33,7 @@ const DayScreen = () => {
               marginBottom: 0,
             }}
           >
-            {day.itemsCount} items
+            {day?.itemsCount} items
           </P>
           <P
             sx={{
@@ -47,7 +47,7 @@ const DayScreen = () => {
               marginBottom: 0,
             }}
           >
-            {`${day.finishedDeliveries} / ${day.totalDeliveries}  Deliveries`}
+            {`${day?.finishedDeliveries} / ${day?.totalDeliveries}  Deliveries`}
           </P>
         </View>
       </Header>

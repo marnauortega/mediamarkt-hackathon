@@ -1,12 +1,12 @@
 import parcels from 'app/data/parcels'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { DaysContext } from 'app/provider/DaysProvider'
 import { AddParcelContext } from 'app/provider/AddParcelProvider'
 
 import { useRouter } from 'solito/router'
 
 import Header from 'app/components/Header'
-import { P, useSx, View } from 'dripsy'
+import { P, useSx, View, Text } from 'dripsy'
 import { TextLink } from 'solito/link'
 
 import AppTextInput from 'app/components/AppTextInput'
@@ -17,17 +17,24 @@ const IdFieldScreen = () => {
   const { id, setId } = useContext(AddParcelContext)
   const sx = useSx()
   const { push } = useRouter()
+  const [error, setError] = useState('')
 
   const handlePress = () => {
-    console.log(dayList)
+    // Regex matching string containing exactly 12 alphanumeric characters and no white space
+    if (!/[a-zA-Z0-9]{12}$/.test(id)) {
+      setError(
+        'String must contain exactly 12 alphanumeric characters and no white spaces'
+      )
+      return
+    }
+
     // 1. input id is in parcel list?
     console.log(parcels)
     const parcel = parcels.find((parcel) => parcel.id.$oid === id)
 
     // 1A. No, error message: "no parcel with such id"
     if (!parcel) {
-      // Error
-      console.log('no parcel with such id')
+      setError('No parcel with such id')
       return
     }
 
@@ -44,12 +51,11 @@ const IdFieldScreen = () => {
 
       if (dayIncludingParcel) {
         //3A. Yes, error message: already added parcel
-        console.log('already added parcel')
+        setError('Already added parcel')
         return
       }
 
       //3B No, add parcel data on already existing day in dayList
-      console.log('add on existing')
       const nextDayList = [...dayList]
       nextDayList[dayIndex].itemsCount += parcel.itemsCount
       nextDayList[dayIndex].totalDeliveries++
@@ -68,7 +74,6 @@ const IdFieldScreen = () => {
       totalDeliveries: 1,
       parcels: [parcel.id],
     }
-    console.log('Just add')
     setDayList([...dayList, nextDay])
     push('/add-parcel/carrier-field')
   }
@@ -151,6 +156,7 @@ const IdFieldScreen = () => {
           placeholder={'Ex. 641db7b2fc16'}
           onChangeText={(text) => setId(text)}
         />
+        <Text sx={{ color: '$primary' }}>{error}</Text>
       </View>
       <View sx={{ padding: 20 }}>
         <AppButton title="Next" onPress={handlePress} />
