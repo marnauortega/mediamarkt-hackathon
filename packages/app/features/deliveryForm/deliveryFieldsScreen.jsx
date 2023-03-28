@@ -54,7 +54,9 @@ const DeliveryFieldsScreen = () => {
 
     // 4. Name is in carriers?
     // 4A. No, "Error: this driver is not in the database, contact support"
-    const carrier = carriers.find((carrier) => carrier.driver === name)
+    const carrier = carriers.find(
+      (carrier) => carrier.driver.toUpperCase() === name.toUpperCase()
+    )
     if (!carrier) {
       setError('This driver is not in the database, contact support')
       return
@@ -69,7 +71,7 @@ const DeliveryFieldsScreen = () => {
 
     // 6. License coincides with carrier.license?
     // 6A. No, "Error: this parcel should be delivered by another Carrier"
-    if (license !== carrier.licensePlate) {
+    if (license.toUpperCase() !== carrier.licensePlate.toUpperCase()) {
       setError(
         'This license is not in our database, contact support or try again'
       )

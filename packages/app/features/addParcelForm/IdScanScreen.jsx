@@ -1,9 +1,9 @@
 import Header from 'app/components/Header'
 import { P, useSx, View, Text } from 'dripsy'
 import { TextLink } from 'solito/link'
-import { Platform } from 'react-native'
 import { StyleSheet } from 'react-native'
-import { BarCodeScanner } from 'expo-barcode-scanner'
+// Temporarily removed barcode scanner because conflicts with web deployment
+// import { BarCodeScanner } from 'expo-barcode-scanner'
 import { useState, useEffect, useContext } from 'react'
 import { AddParcelContext } from 'app/provider/AddParcelProvider'
 
@@ -12,8 +12,6 @@ import { useRouter } from 'solito/router'
 const IdScanScreen = () => {
   const sx = useSx()
 
-  if (Platform.OS === 'android' || Platform.OS === 'ios') {
-  }
   // const { id, setId } = useContext(AddParcelContext)
   // const [hasPermission, setHasPermission] = useState(null)
   // const [scanned, setScanned] = useState(false)
@@ -117,6 +115,7 @@ const IdScanScreen = () => {
           height: 40,
         }}
       >
+        <P>Not available on web</P>
         {/* <BarCodeScanner
           onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
           style={StyleSheet.absoluteFillObject}
