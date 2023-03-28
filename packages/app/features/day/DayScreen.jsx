@@ -1,20 +1,25 @@
+import { useContext } from 'react'
+import { DaysContext } from 'app/provider/DaysProvider'
+
 import Header from 'app/components/Header'
 import ParcelRow from '../../components/ParcelRow'
 import { createParam } from 'solito'
-import days from 'app/data/days'
 import formatDateSlug from 'app/utils/formatDateSlug'
+import formatDateDayMonth from 'app/utils/formatDateDayMonth'
 import parcels from 'app/data/parcels'
-import { P, View } from 'dripsy'
+import { FlatList, P, View } from 'dripsy'
+import AddParcelLink from 'app/components/AddParcelLink'
 
 const { useParam } = createParam()
 
 const DayScreen = () => {
   const [daySlug] = useParam('slug')
-  const day = days.find((day) => formatDateSlug(day.date) === daySlug)
+  const { dayList } = useContext(DaysContext)
+  const day = dayList.find((day) => formatDateSlug(day.date) === daySlug)
 
   return (
     <>
-      <Header preTitle="Day" title="24 Mar">
+      <Header preTitle="Day" title={formatDateDayMonth(day.date)}>
         <View sx={{ flexDirection: 'row', gap: 15 }}>
           <P
             sx={{
@@ -28,7 +33,7 @@ const DayScreen = () => {
               marginBottom: 0,
             }}
           >
-            14 Items
+            {day.itemsCount} items
           </P>
           <P
             sx={{
@@ -42,26 +47,31 @@ const DayScreen = () => {
               marginBottom: 0,
             }}
           >
-            1 / 4 Deliveries
+            {`${day.finishedDeliveries} / ${day.totalDeliveries}  Deliveries`}
           </P>
         </View>
       </Header>
-      {day?.parcels?.map((parcelRef) => {
-        const parcelId = parcelRef.$oid
+      <FlatList
+        data={day?.parcels}
+        renderItem={({ item }) => {
+          const parcelId = item.$oid
+          const parcel = parcels.find((parcel) => parcel.id.$oid === parcelId)
 
-        const parcel = parcels.find((parcel) => parcel.id.$oid === parcelId)
-
-        return (
-          <ParcelRow
-            key={parcel.id.$oid}
-            id={parcel.id.$oid}
-            carrier="Seur"
-            itemsCount={parcel.itemsCount}
-            deliveryStatus="delivered"
-            daySlug={daySlug}
-          />
-        )
-      })}
+          return (
+            <ParcelRow
+              key={parcel.id.$oid}
+              id={parcel.id.$oid}
+              carrier={item.carrier}
+              itemsCount={parcel.itemsCount}
+              deliveryStatus={item.deliveryStatus}
+              daySlug={daySlug}
+            />
+          )
+        }}
+      />
+      <View sx={{ padding: 20 }}>
+        <AddParcelLink />
+      </View>
     </>
   )
 }

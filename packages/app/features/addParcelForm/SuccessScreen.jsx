@@ -4,8 +4,11 @@ import { useSx, View } from 'dripsy'
 import AppButton from 'app/components/AppButton'
 import ParcelRow from 'app/components/ParcelRow'
 
+import { useRouter } from 'solito/router'
+
 const SuccessScreen = () => {
   const sx = useSx()
+  const { push } = useRouter()
 
   return (
     <>
@@ -24,7 +27,7 @@ const SuccessScreen = () => {
         <AppButton
           title="Back to list"
           onPress={() => {
-            push('/add-parcel/success')
+            push('/')
           }}
         />
       </View>

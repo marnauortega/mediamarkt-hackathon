@@ -1,5 +1,6 @@
 export default function formatDateSlug(date) {
-  const formattedDate = date.toLocaleString('es-ES', {
+  const dateObject = new Date(date)
+  const formattedDate = dateObject.toLocaleString('es-ES', {
     day: 'numeric',
     month: 'short',
     year: 'numeric',

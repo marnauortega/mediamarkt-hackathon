@@ -1,8 +1,8 @@
 import { View, Text, Pressable } from 'dripsy'
 
-const AppButton = ({ title, onPress }) => {
+const AppButton = ({ title, ...otherProps }) => {
   return (
-    <Pressable onPress={onPress}>
+    <Pressable {...otherProps}>
       <View
         sx={{
           height: 54,

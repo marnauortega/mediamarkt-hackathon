@@ -1,11 +1,15 @@
+import { useContext } from 'react'
+import { DaysContext } from 'app/provider/DaysProvider'
+
 import Header from 'app/components/Header'
-import { P, useSx, FlatList } from 'dripsy'
+import { View, P, useSx, FlatList } from 'dripsy'
 import DayRow from '../../components/DayRow'
-import days from 'app/data/days'
 import AddParcelLink from 'app/components/AddParcelLink'
 
 const HomeScreen = () => {
   const sx = useSx()
+
+  const { dayList } = useContext(DaysContext)
 
   return (
     <>
@@ -26,18 +30,20 @@ const HomeScreen = () => {
         </P>
       </Header>
       <FlatList
-        data={days}
+        data={dayList}
         renderItem={({ item }) => (
           <DayRow
             date={item.date}
-            items={item.items}
+            itemsCount={item.itemsCount}
             finishedDeliveries={item.finishedDeliveries}
             totalDeliveries={item.totalDeliveries}
           />
         )}
         keyExtractor={(day) => day.id.toString()}
       />
-      <AddParcelLink />
+      <View sx={{ padding: 20 }}>
+        <AddParcelLink />
+      </View>
     </>
   )
 }

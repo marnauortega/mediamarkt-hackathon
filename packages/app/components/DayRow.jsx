@@ -6,7 +6,7 @@ import { Link } from 'solito/link'
 import formatDateDayMonth from '../utils/formatDateDayMonth'
 import formatDateDaySlug from '../utils/formatDateSlug'
 
-const DayRow = ({ date, items, finishedDeliveries, totalDeliveries }) => {
+const DayRow = ({ date, itemsCount, finishedDeliveries, totalDeliveries }) => {
   const formattedDate = formatDateDayMonth(date)
   const slug = formatDateDaySlug(date)
 
@@ -28,7 +28,7 @@ const DayRow = ({ date, items, finishedDeliveries, totalDeliveries }) => {
           {formattedDate}
         </P>
         <View sx={{ flexDirection: 'row', alignItems: 'center' }}>
-          <P sx={{ paddingRight: 10, color: '$darkGray' }}>{items}</P>
+          <P sx={{ paddingRight: 10, color: '$darkGray' }}>{itemsCount}</P>
           <SolitoImage src={box} height={16} width={16} alt="A box icon" />
         </View>
         <View sx={{ flexDirection: 'row', alignItems: 'center' }}>

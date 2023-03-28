@@ -1,8 +1,8 @@
 import { TextInput } from 'dripsy'
 import { useState } from 'react'
 
-const AppTextInput = ({ placeholder }) => {
-  const [id, setId] = useState('')
+const AppTextInput = (props) => {
+  // const [id, setId] = useState('')
 
   return (
     <TextInput
@@ -16,9 +16,8 @@ const AppTextInput = ({ placeholder }) => {
         textTransform: 'uppercase',
         color: '$darkerGray',
       }}
-      onChangeText={(text) => setId(text)}
-      placeholder={placeholder}
       placeholderTextColor="rgba(58,53,65, 0.50)"
+      {...props}
     />
   )
 }
