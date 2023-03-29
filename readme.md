@@ -58,7 +58,7 @@ Inside `apps` there's:
 
 To start the app and run it on a simulator, these are the steps that should be followed:
 
-1. The first time, we have to navigate to `apps/expo` and run `npx expo run:ios` or `npx expo run:android` to start running for native
+1. The first time, we have to navigate to `apps/expo` and run `npx expo run:ios` or `npx expo run:android` to start running for native. Because of the structure of this monorepo, the app can't be tested through Expo Go, only with simulators with a dev client.
 
 2. Then we can navigate to the root of the project and simply run `yarn native` to run on android or ios and `yarn web`to run the web app.
 
